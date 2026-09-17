@@ -1,0 +1,48 @@
+{
+  "meta": { "languageName": "Español" },
+  "business": {
+    "name": "Teo’s Barbershop",
+    "tagline": "Cortes, estilo y cuidado personal con trato de barrio y acabado profesional.",
+    "address": "C. Chilpancingo 83, Hipódromo, Cuauhtémoc, 06100 Ciudad de México, CDMX",
+    "hours": "Abierto hoy"
+  },
+  "navigation": {
+    "ariaLabel": "Navegación principal", "homeLabel": "Ir al inicio", "services": "Servicios",
+    "gallery": "Galería", "contact": "Contacto", "callLabel": "Llamar a Teo’s Barbershop",
+    "languageLabel": "Cambiar idioma"
+  },
+  "hero": {
+    "eyebrow": "Barbería y estética en Condesa", "book": "Agendar por WhatsApp",
+    "prices": "Ver precios", "factsLabel": "Datos rápidos",
+    "message": "Hola, quiero agendar una cita en Teo’s Barbershop."
+  },
+  "intro": {
+    "ariaLabel": "Acerca del negocio", "title": "Tradición, detalle y estilo en el corazón de la Condesa.",
+    "body": "En Teo’s Barbershop cuidamos cada detalle, desde cortes clásicos y modernos hasta barba, color, faciales y maquillaje. Reserva directamente por WhatsApp y déjanos ayudarte a encontrar tu mejor estilo."
+  },
+  "servicesSection": { "eyebrow": "Menú de servicios", "title": "Precios claros para decidir rápido" },
+  "services": [
+    { "name": "Alaciado o moldeado", "price": "$120", "note": "Acabado rápido para salir impecable." },
+    { "name": "Dama / Caballero / Niños", "price": "$175", "note": "Corte clásico, moderno o familiar." },
+    { "name": "Barba rasurado", "price": "$195", "note": "Perfilado limpio con detalle." },
+    { "name": "Bigote", "price": "$80", "note": "Ajuste exprés para mantener la forma." },
+    { "name": "Facial", "price": "$539", "note": "Limpieza y descanso para la piel." },
+    { "name": "Depilado de ceja", "price": "$190", "note": "Definición natural y precisa." },
+    { "name": "Planchado", "price": "$190", "note": "Estilo pulido para eventos o diario." },
+    { "name": "Maquillaje", "price": "$950", "note": "Look completo para una ocasión especial." },
+    { "name": "Tintes / efectos / modeling", "price": "$954", "note": "Color, textura y transformación." }
+  ],
+  "gallerySection": { "eyebrow": "Galería", "title": "Conoce el espacio y nuestro trabajo" },
+  "gallery": [
+    { "title": "Una barbería con identidad", "caption": "Un espacio auténtico en la Condesa para sentirte como en casa." },
+    { "title": "Silla principal", "caption": "Un ambiente clásico y cómodo preparado para atenderte." },
+    { "title": "Cuidado facial", "caption": "Higiene, oficio y atención dedicada en cada servicio." },
+    { "title": "Resultados listos", "caption": "Cortes y barbas definidos para que salgas luciendo excelente." }
+  ],
+  "review": { "quote": "“Excelente atención, buen corte y ambiente de barbería tradicional.”", "caption": "Reseña de cliente" },
+  "contact": {
+    "eyebrow": "Agenda hoy", "title": "Tu próximo estilo comienza aquí",
+    "body": "Escríbenos por WhatsApp para consultar disponibilidad y reservar tu cita.",
+    "button": "Pedir disponibilidad", "message": "Hola, vi su página y quiero preguntar por disponibilidad."
+  }
+}

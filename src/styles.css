@@ -83,6 +83,34 @@ nav {
   background: #fff;
 }
 
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.languageToggle {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 7px;
+  padding: 0 12px;
+  border: 1px solid rgba(24, 32, 51, 0.16);
+  border-radius: 8px;
+  color: #182033;
+  background: #fff;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.languageToggle:hover,
+.iconButton:hover {
+  border-color: #b7192b;
+  color: #b7192b;
+}
+
 .hero {
   position: relative;
   min-height: min(760px, calc(100vh - 68px));

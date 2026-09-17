@@ -1,0 +1,48 @@
+{
+  "meta": { "languageName": "English" },
+  "business": {
+    "name": "Teo’s Barbershop",
+    "tagline": "Haircuts, style, and personal care with neighborhood warmth and a professional finish.",
+    "address": "83 Chilpancingo St., Hipódromo, Cuauhtémoc, 06100 Mexico City, CDMX",
+    "hours": "Open today"
+  },
+  "navigation": {
+    "ariaLabel": "Main navigation", "homeLabel": "Go to home", "services": "Services",
+    "gallery": "Gallery", "contact": "Contact", "callLabel": "Call Teo’s Barbershop",
+    "languageLabel": "Change language"
+  },
+  "hero": {
+    "eyebrow": "Barbershop and beauty services in Condesa", "book": "Book on WhatsApp",
+    "prices": "View prices", "factsLabel": "Quick details",
+    "message": "Hi, I would like to book an appointment at Teo’s Barbershop."
+  },
+  "intro": {
+    "ariaLabel": "About the business", "title": "Tradition, detail, and style in the heart of Condesa.",
+    "body": "At Teo’s Barbershop, we care about every detail, from classic and modern cuts to beard care, color, facials, and makeup. Book directly through WhatsApp and let us help you find your best style."
+  },
+  "servicesSection": { "eyebrow": "Service menu", "title": "Clear prices for an easy choice" },
+  "services": [
+    { "name": "Straightening or styling", "price": "$120", "note": "A quick finish so you leave looking sharp." },
+    { "name": "Women / Men / Children", "price": "$175", "note": "Classic, modern, or family haircuts." },
+    { "name": "Beard shave", "price": "$195", "note": "A clean, detailed beard finish." },
+    { "name": "Mustache", "price": "$80", "note": "A quick trim to maintain its shape." },
+    { "name": "Facial", "price": "$539", "note": "Cleansing and relaxation for your skin." },
+    { "name": "Eyebrow shaping", "price": "$190", "note": "Natural, precise definition." },
+    { "name": "Hair ironing", "price": "$190", "note": "A polished style for every day or an event." },
+    { "name": "Makeup", "price": "$950", "note": "A complete look for a special occasion." },
+    { "name": "Color / effects / modeling", "price": "$954", "note": "Color, texture, and transformation." }
+  ],
+  "gallerySection": { "eyebrow": "Gallery", "title": "See our space and our work" },
+  "gallery": [
+    { "title": "A barbershop with character", "caption": "An authentic Condesa space where you can feel at home." },
+    { "title": "The main chair", "caption": "A comfortable, classic setting ready to welcome you." },
+    { "title": "Facial care", "caption": "Hygiene, craftsmanship, and dedicated attention in every service." },
+    { "title": "A polished result", "caption": "Sharp haircuts and beards so you leave looking your best." }
+  ],
+  "review": { "quote": "“Excellent service, a great haircut, and a traditional barbershop atmosphere.”", "caption": "Customer review" },
+  "contact": {
+    "eyebrow": "Book today", "title": "Your next style starts here",
+    "body": "Message us on WhatsApp to check availability and book your appointment.",
+    "button": "Check availability", "message": "Hi, I saw your website and would like to ask about availability."
+  }
+}

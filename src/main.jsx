@@ -1,147 +1,103 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import {
-  CalendarCheck,
-  Clock3,
-  MapPin,
-  MessageCircle,
-  Phone,
-  Scissors,
-  Sparkles,
-  Star,
-} from "lucide-react";
+import { CalendarCheck, Clock3, Languages, MapPin, MessageCircle, Phone, Scissors, Sparkles, Star } from "lucide-react";
+import en from "./locales/en.json";
+import es from "./locales/es.json";
 import "./styles.css";
 
-const business = {
-  name: "Barber Shop",
-  tagline: "Cortes, estilo y cuidado personal con trato de barrio y acabado profesional.",
-  phoneDisplay: "+52 55 5516 9106",
-  phoneWhatsapp: "525555169106",
-  address: "Sucursal Condesa, Ciudad de Mexico",
-  hours: "Abierto hoy",
-};
-
-const services = [
-  { name: "Alaciado o moldeado", price: "$120", note: "Acabado rapido para salir impecable." },
-  { name: "Dama / Caballero / Ninos", price: "$175", note: "Corte clasico, moderno o familiar." },
-  { name: "Barba rasurado", price: "$195", note: "Perfilado limpio con detalle." },
-  { name: "Bigote", price: "$80", note: "Ajuste expres para mantener forma." },
-  { name: "Facial", price: "$539", note: "Limpieza y descanso para la piel." },
-  { name: "Depilado de ceja", price: "$190", note: "Definicion natural y precisa." },
-  { name: "Planchado", price: "$190", note: "Estilo pulido para eventos o diario." },
-  { name: "Maquillaje", price: "$950", note: "Look completo para ocasion especial." },
-  { name: "Tintes / efectos / modeling", price: "$954", note: "Color, textura y transformacion." },
+const PHONE_DISPLAY = "+52 55 5516 9106";
+const PHONE_WHATSAPP = "525555169106";
+const LANGUAGE_KEY = "teos-barbershop-language";
+const translations = { es, en };
+const galleryImages = [
+  "/photos/outsideBarberShop.png",
+  "/photos/barberSalon.png",
+  "/photos/barber.png",
+  "/photos/haircut.png",
 ];
 
-const gallery = [
-  {
-    title: "Fachada con identidad",
-    caption: "Una presencia de calle clara ayuda a que nuevos clientes te ubiquen rapido.",
-    image:
-      "https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    title: "Silla principal",
-    caption: "El sitio vende confianza mostrando el espacio real donde atiendes.",
-    image:
-      "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    title: "Cuidado facial",
-    caption: "Fotos de proceso comunican higiene, oficio y atencion al detalle.",
-    image:
-      "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    title: "Resultados listos",
-    caption: "Antes y despues, cortes y barbas son ideales para cerrar citas.",
-    image:
-      "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?auto=format&fit=crop&w=1200&q=85",
-  },
-];
+function getInitialLanguage() {
+  const savedLanguage = localStorage.getItem(LANGUAGE_KEY);
+  return savedLanguage === "en" || savedLanguage === "es" ? savedLanguage : "es";
+}
 
 function whatsappLink(message) {
-  return `https://wa.me/${business.phoneWhatsapp}?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/${PHONE_WHATSAPP}?text=${encodeURIComponent(message)}`;
 }
 
 function App() {
+  const [language, setLanguage] = useState(getInitialLanguage);
+  const content = translations[language];
+  const alternateLanguage = language === "es" ? "en" : "es";
+
+  useEffect(() => {
+    localStorage.setItem(LANGUAGE_KEY, language);
+    document.documentElement.lang = language;
+    document.title = `${content.business.name} | Condesa`;
+  }, [language, content.business.name]);
+
   return (
     <main>
-      <header className="topbar" aria-label="Navegacion principal">
-        <a className="brand" href="#inicio" aria-label="Ir al inicio">
-          <span className="brandMark">B</span>
-          <span>{business.name}</span>
+      <header className="topbar" aria-label={content.navigation.ariaLabel}>
+        <a className="brand" href="#inicio" aria-label={content.navigation.homeLabel}>
+          <span className="brandMark">T</span>
+          <span>{content.business.name}</span>
         </a>
         <nav>
-          <a href="#servicios">Servicios</a>
-          <a href="#galeria">Galeria</a>
-          <a href="#contacto">Contacto</a>
+          <a href="#servicios">{content.navigation.services}</a>
+          <a href="#galeria">{content.navigation.gallery}</a>
+          <a href="#contacto">{content.navigation.contact}</a>
         </nav>
-        <a className="iconButton" href={`tel:${business.phoneWhatsapp}`} aria-label="Llamar">
-          <Phone size={20} />
-        </a>
+        <div className="headerActions">
+          <button
+            className="languageToggle"
+            type="button"
+            onClick={() => setLanguage(alternateLanguage)}
+            aria-label={`${content.navigation.languageLabel}: ${translations[alternateLanguage].meta.languageName}`}
+            title={content.navigation.languageLabel}
+          >
+            <Languages size={18} />
+            <span>{alternateLanguage.toUpperCase()}</span>
+          </button>
+          <a className="iconButton" href={`tel:+${PHONE_WHATSAPP}`} aria-label={content.navigation.callLabel}>
+            <Phone size={20} />
+          </a>
+        </div>
       </header>
 
       <section id="inicio" className="hero">
-        <div className="heroMedia" aria-hidden="true">
-          <img src={gallery[0].image} alt="" />
-        </div>
+        <div className="heroMedia" aria-hidden="true"><img src={galleryImages[0]} alt="" /></div>
         <div className="heroContent">
-          <p className="eyebrow">Barberia y estetica en Condesa</p>
-          <h1>{business.name}</h1>
-          <p>{business.tagline}</p>
+          <p className="eyebrow">{content.hero.eyebrow}</p>
+          <h1>{content.business.name}</h1>
+          <p>{content.business.tagline}</p>
           <div className="heroActions">
-            <a
-              className="primaryButton"
-              href={whatsappLink("Hola, quiero agendar una cita en Barber Shop.")}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <MessageCircle size={20} />
-              Agendar por WhatsApp
+            <a className="primaryButton" href={whatsappLink(content.hero.message)} target="_blank" rel="noreferrer">
+              <MessageCircle size={20} />{content.hero.book}
             </a>
-            <a className="secondaryButton" href="#servicios">
-              Ver precios
-            </a>
+            <a className="secondaryButton" href="#servicios">{content.hero.prices}</a>
           </div>
-          <div className="quickFacts" aria-label="Datos rapidos">
-            <span>
-              <Clock3 size={18} />
-              {business.hours}
-            </span>
-            <span>
-              <MapPin size={18} />
-              {business.address}
-            </span>
+          <div className="quickFacts" aria-label={content.hero.factsLabel}>
+            <span><Clock3 size={18} />{content.business.hours}</span>
+            <span><MapPin size={18} />{content.business.address}</span>
           </div>
         </div>
       </section>
 
-      <section className="intro" aria-label="Propuesta del negocio">
-        <div>
-          <Scissors size={26} />
-          <h2>Un demo hecho para vender citas, no solo para verse bonito.</h2>
-        </div>
-        <p>
-          Esta estructura sirve como plantilla comercial: portada con foto real,
-          boton directo a WhatsApp, lista de precios clara, prueba visual y cierre
-          de contacto. Para cada negocio local solo cambias textos, colores,
-          servicios y fotos.
-        </p>
+      <section className="intro" aria-label={content.intro.ariaLabel}>
+        <div><Scissors size={26} /><h2>{content.intro.title}</h2></div>
+        <p>{content.intro.body}</p>
       </section>
 
       <section id="servicios" className="section">
         <div className="sectionHeader">
-          <p className="eyebrow">Menu de servicios</p>
-          <h2>Precios claros para decidir rapido</h2>
+          <p className="eyebrow">{content.servicesSection.eyebrow}</p>
+          <h2>{content.servicesSection.title}</h2>
         </div>
         <div className="serviceGrid">
-          {services.map((service) => (
+          {content.services.map((service) => (
             <article className="serviceCard" key={service.name}>
-              <div>
-                <h3>{service.name}</h3>
-                <p>{service.note}</p>
-              </div>
+              <div><h3>{service.name}</h3><p>{service.note}</p></div>
               <strong>{service.price}</strong>
             </article>
           ))}
@@ -150,57 +106,39 @@ function App() {
 
       <section id="galeria" className="galleryBand">
         <div className="sectionHeader">
-          <p className="eyebrow">Galeria</p>
-          <h2>Fotos que convierten confianza en citas</h2>
+          <p className="eyebrow">{content.gallerySection.eyebrow}</p>
+          <h2>{content.gallerySection.title}</h2>
         </div>
         <div className="galleryGrid">
-          {gallery.map((item) => (
+          {content.gallery.map((item, index) => (
             <article className="photoCard" key={item.title}>
-              <img src={item.image} alt={item.title} />
-              <div>
-                <h3>{item.title}</h3>
-                <p>{item.caption}</p>
-              </div>
+              <img src={galleryImages[index]} alt={item.title} />
+              <div><h3>{item.title}</h3><p>{item.caption}</p></div>
             </article>
           ))}
         </div>
       </section>
 
       <section className="proof">
-        <div>
-          <Star size={24} fill="currentColor" />
-          <Star size={24} fill="currentColor" />
-          <Star size={24} fill="currentColor" />
-          <Star size={24} fill="currentColor" />
-          <Star size={24} fill="currentColor" />
+        <div aria-hidden="true">
+          {Array.from({ length: 5 }, (_, index) => <Star key={index} size={24} fill="currentColor" />)}
         </div>
-        <blockquote>
-          "Excelente atencion, buen corte y ambiente de barberia tradicional."
-        </blockquote>
-        <p>Texto demo editable para resenas de Google, Facebook o clientes reales.</p>
+        <blockquote>{content.review.quote}</blockquote>
+        <p>{content.review.caption}</p>
       </section>
 
       <section id="contacto" className="contact">
         <div>
-          <p className="eyebrow">Agenda hoy</p>
-          <h2>Convierte visitas en mensajes directos al negocio</h2>
-          <p>
-            El boton abre WhatsApp con mensaje precargado para reducir friccion y
-            facilitar que el cliente reserve desde el celular.
-          </p>
+          <p className="eyebrow">{content.contact.eyebrow}</p>
+          <h2>{content.contact.title}</h2>
+          <p>{content.contact.body}</p>
         </div>
         <div className="contactPanel">
           <Sparkles size={26} />
-          <h3>{business.phoneDisplay}</h3>
-          <p>{business.address}</p>
-          <a
-            className="primaryButton full"
-            href={whatsappLink("Hola, vi su pagina y quiero preguntar por disponibilidad.")}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <CalendarCheck size={20} />
-            Pedir disponibilidad
+          <h3>{PHONE_DISPLAY}</h3>
+          <p>{content.business.address}</p>
+          <a className="primaryButton full" href={whatsappLink(content.contact.message)} target="_blank" rel="noreferrer">
+            <CalendarCheck size={20} />{content.contact.button}
           </a>
         </div>
       </section>

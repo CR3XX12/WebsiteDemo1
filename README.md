@@ -1,4 +1,4 @@
-# Barber Shop Local Demo
+# Teo's Barbershop
 
 Professional demo website for a local barbershop or salon. The content is data-driven inside `src/main.jsx`, so this can become a reusable structure for pitching local businesses.
 
@@ -21,7 +21,7 @@ On Windows PowerShell, use `npm.cmd` if script execution blocks `npm`.
 
 ## Replacing Demo Images
 
-The current build uses remote barber/salon fallback images. For a sales-ready client demo, add the real photos to `public/photos/` and replace the `image` values in `src/main.jsx`, for example:
+The client photos live in `public/photos/`. To change one, add the new image there and update its `/photos/filename.png` entry in the `galleryImages` array in `src/main.jsx`.
 
 ```js
 image: "/photos/fachada.jpg"
